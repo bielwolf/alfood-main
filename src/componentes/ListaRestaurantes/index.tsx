@@ -18,6 +18,8 @@ const ListaRestaurantes = () => {
   const [paginaAnterior, setPaginaAnterior] = useState('');
 
   const [busca, setBusca] = useState('')
+  const [ordenacao, setOrdenacao] = useState('')
+
 
   useEffect(() => {
     carregarDados('http://0.0.0.0:8000/api/v1/restaurantes/')
@@ -51,7 +53,19 @@ const ListaRestaurantes = () => {
   return (<section className={style.ListaRestaurantes}>
     <h1>Os restaurantes mais <em>bacanas</em>!</h1>
     <form onSubmit={buscar}>
-      <input type="text" value={busca} onChange={evento => setBusca(evento.target.value)} placeholder="Digite sua busca..." />
+      <div>
+        <input type="text" value={busca} onChange={evento => setBusca(evento.target.value)} placeholder="Digite sua busca..." />
+      </div>
+      <div>
+        <label htmlFor="select-ordernacao">Ordenar por:</label>
+        <select name="select-ordernacao" id="select-ordernacao" value={ordenacao}
+        onChange={evento => setOrdenacao(evento.target.value)}
+        >
+          <option value="">Padrão</option>
+          <option value="id">ID</option>
+          <option value="nome">Nome</option>
+        </select>
+      </div>
       <button type="submit">Buscar</button>
     </form>
     {restaurantes?.map(item => <Restaurante restaurante={item} key={item.id} />)}
