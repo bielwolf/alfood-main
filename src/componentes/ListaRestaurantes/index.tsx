@@ -59,7 +59,7 @@ const ListaRestaurantes = () => {
       <div>
         <label htmlFor="select-ordernacao">Ordenar por:</label>
         <select name="select-ordernacao" id="select-ordernacao" value={ordenacao}
-        onChange={evento => setOrdenacao(evento.target.value)}
+          onChange={evento => setOrdenacao(evento.target.value)}
         >
           <option value="">Padrão</option>
           <option value="id">ID</option>
