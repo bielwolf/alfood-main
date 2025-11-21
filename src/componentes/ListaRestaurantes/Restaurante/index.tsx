@@ -13,7 +13,7 @@ const Restaurante = ({ restaurante }: RestauranteProps) => {
   const [pratos, setPratos] = useState<IPrato[]>([]);
 
   useEffect(() => {
-    axios.get(`http://0.0.0.0:8000/api/v1/${restaurante.id}/pratos/`)
+    axios.get(`http://0.0.0.0:8000/api/v1/restaurantes/${restaurante.id}/pratos/`)
       .then(resposta => {
         setPratos(resposta.data)
       })
